@@ -2028,12 +2028,12 @@ def test_config():
                 proxy_tests.append(('HTTPS', proxy, 'https://httpbin.org/ip', None))
 
         # DaddyLive e Vavoo URLs
-        daddy_url = "https://patronspor0252art262dscsvwes.cfd/"
-        vavoo_url = 'https://2ue.d72577a9dd0ec31.sbs/patron/mono.m3u8'
+        daddy_url = "https://new.newkso.ru/wind/"
+        vavoo_url = 'https://vavoo.to/play/1534161807/index.m3u8'
         vavoo_headers = {
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3',
-            'referer': 'https://patronspor0252art262dscsvwes.cfd/',
-            'origin': 'https://patronspor0252art262dscsvwes.cfd'
+            'user-agent': 'VAVOO/2.6',
+            'referer': 'https://vavoo.to/',
+            'origin': 'https://vavoo.to'
         }
 
         # Test DaddyLive con tutti i proxy
@@ -2078,9 +2078,9 @@ def test_config():
         try:
             cmd2 = [
                 'curl', '-k', '--max-time', '10', '--silent', '--show-error', '--connect-timeout', '7',
-                '-H', 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3',
-                '-H', 'referer: https://patronspor0252art262dscsvwes.cfd/',
-                '-H', 'origin: https://patronspor0252art262dscsvwes.cfd/',
+                '-H', 'user-agent: VAVOO/2.6',
+                '-H', 'referer: https://vavoo.to/',
+                '-H', 'origin: https://vavoo.to',
                 vavoo_url
             ]
             proc2 = subprocess.run(cmd2, capture_output=True, text=True)
