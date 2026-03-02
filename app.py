@@ -132,7 +132,7 @@ class VavooResolver:
     def getAuthSignature(self):
         """Funzione che replica esattamente quella dell'addon utils.py"""
         headers = {
-            "user-agent": "okhttp/4.11.0",
+            "user-agent": "Mozilla/5.0",
             "accept": "application/json", 
             "content-type": "application/json; charset=utf-8",
             "content-length": "1106",
@@ -232,7 +232,7 @@ class VavooResolver:
             return None
             
         headers = {
-            "user-agent": "MediaHubMX/2",
+            "user-agent": "Mozilla/5.0",
             "accept": "application/json",
             "content-type": "application/json; charset=utf-8", 
             "content-length": "115",
@@ -1566,8 +1566,8 @@ def resolve_m3u8_link(url, headers=None):
 
     daddylive_headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
-        'Referer': daddy_base_url,
-        'Origin': daddy_origin
+        'Referer': https://inattv1269.xyz/l,
+        'Origin': https://inattv1269.xyz/
     }
     final_headers_for_resolving = {**final_headers, **daddylive_headers}
 
@@ -2078,9 +2078,9 @@ def test_config():
         try:
             cmd2 = [
                 'curl', '-k', '--max-time', '10', '--silent', '--show-error', '--connect-timeout', '7',
-                '-H', 'user-agent: VAVOO/2.6',
-                '-H', 'referer: https://vavoo.to/',
-                '-H', 'origin: https://vavoo.to',
+                '-H', 'user-agent:Mozilla/5.0',
+                '-H', 'referer: https://inattv1269.xyz/',
+                '-H', 'origin: https://inattv1269.xyz/',
                 vavoo_url
             ]
             proc2 = subprocess.run(cmd2, capture_output=True, text=True)
