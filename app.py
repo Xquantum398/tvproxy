@@ -115,7 +115,7 @@ def get_daddylive_base_url():
     except requests.RequestException as e:
         app.logger.error(f"Error fetching dynamic DaddyLive URL: {e}. Using fallback.")
     
-    DADDYLIVE_BASE_URL = "https://inattv1269.xyz/"
+    DADDYLIVE_BASE_URL = "https://daddylive.sx/"
     app.logger.info(f"Using fallback DaddyLive URL: {DADDYLIVE_BASE_URL}")
     return DADDYLIVE_BASE_URL
 
@@ -124,7 +124,7 @@ class VavooResolver:
     def __init__(self):
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': 'https://inattv1269.xyz/'
+            'User-Agent': 'MediaHubMX/2'
         })
         # Assicurati che la sessione non erediti proxy dalle variabili d'ambiente
         self.session.trust_env = False
@@ -132,7 +132,7 @@ class VavooResolver:
     def getAuthSignature(self):
         """Funzione che replica esattamente quella dell'addon utils.py"""
         headers = {
-            "user-agent": "https://inattv1269.xyz/",
+            "user-agent": "okhttp/4.11.0",
             "accept": "application/json", 
             "content-type": "application/json; charset=utf-8",
             "content-length": "1106",
@@ -232,7 +232,7 @@ class VavooResolver:
             return None
             
         headers = {
-            "user-agent": "https://inattv1269.xyz/",
+            "user-agent": "MediaHubMX/2",
             "accept": "application/json",
             "content-type": "application/json; charset=utf-8", 
             "content-length": "115",
@@ -1879,7 +1879,7 @@ def index():
             "https://vavoo.to/vavoo-iptv/play/[ID]",
             "https://vavoo.to/play/[ID]"
         ],
-        "test_url": "https://2ue.d72577a9dd0ec31.sbs/zirve/mono.m3u8",
+        "test_url": "https://vavoo.to/vavoo-iptv/play/277580225585f503fbfc87",
         "endpoints": {
             "m3u_proxy": "/proxy/m3u?url=[VAVOO_URL]",
             "vavoo_direct": "/proxy/vavoo?url=[VAVOO_URL]"
@@ -2029,11 +2029,11 @@ def test_config():
 
         # DaddyLive e Vavoo URLs
         daddy_url = "https://new.newkso.ru/wind/"
-        vavoo_url = 'https://2ue.d72577a9dd0ec31.sbs/zirve/mono.m3u8'
+        vavoo_url = 'https://vavoo.to/play/1534161807/index.m3u8'
         vavoo_headers = {
-            'user-agent': 'Mozilla/5.0',
-            'referer': 'https://inattv1269.xyz/',
-            'origin': 'https://inattv1269.xyz/'
+            'user-agent': 'VAVOO/2.6',
+            'referer': 'https://vavoo.to/',
+            'origin': 'https://vavoo.to'
         }
 
         # Test DaddyLive con tutti i proxy
@@ -2078,9 +2078,9 @@ def test_config():
         try:
             cmd2 = [
                 'curl', '-k', '--max-time', '10', '--silent', '--show-error', '--connect-timeout', '7',
-                '-H', 'user-agent: Mozilla/5.0',
-                '-H', 'referer: https://inattv1269.xyz/',
-                '-H', 'origin: https://inattv1269.xyz/',
+                '-H', 'user-agent: VAVOO/2.6',
+                '-H', 'referer: https://vavoo.to/',
+                '-H', 'origin: https://vavoo.to',
                 vavoo_url
             ]
             proc2 = subprocess.run(cmd2, capture_output=True, text=True)
@@ -2425,7 +2425,7 @@ def memory_cleanup():
 def test_prebuffer():
     """Testa il sistema di pre-buffering con un URL di esempio"""
     try:
-        test_url = (request.json or {}).get('test_url', 'https://2ue.d72577a9dd0ec31.sbs/zirve/mono.m3u8')
+        test_url = (request.json or {}).get('test_url', 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.m3u8')
         stream_id = pre_buffer_manager.get_stream_id_from_url(test_url)
         
         # Test del pre-buffering
